@@ -22,7 +22,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #4bc0c8, #c779d0, #feac5e);
+        background: rgb(100, 177, 188);
       }
       #info {
         margin-top: -100px;
@@ -63,21 +63,20 @@
       }
 
       .white {
-        background: #fff;
-        border: 1px solid #ccc;
-        box-shadow: 0 0 3px #ccc, 0 2px 2px #eee inset;
-      }
-
-      .black {
         background: #000;
         border: 1px solid #000;
         box-shadow: 0 1px 3px #eee, 1px 1px 2px rgb(99, 99, 99) inset;
+      }
+      .black {
+        background: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 3px #ccc, 0 2px 2px #eee inset;
       }
     </style>
   </head>
 
   <body>
-    <div id="info">白子先行</div>
+    <div id="info">黑子先行</div>
     <div id="root"></div>
     <script>
       // 灵感来自于这里：
@@ -143,10 +142,10 @@
             // 改变棋子颜色，因为每次点击都会交换选手
             chessColor = "black";
             // 改变提示
-            document.getElementById("info").innerHTML = "白子回合";
+            document.getElementById("info").innerHTML = "黑子下棋";
           } else {
             chessColor = "white";
-            document.getElementById("info").innerHTML = "黑子回合";
+            document.getElementById("info").innerHTML = "白子下棋";
           }
           // 把颜色css加入标签的class列表里
           target.classList.add(chessColor);
@@ -232,7 +231,7 @@
           if (positiveDirectionNumber + negativeDirectionNumber >= 4) {
             // 提示胜利方后reload刷新页面重新开始
             window.confirm(
-              (chessColor === "white" ? "白棋" : "黑棋") + "胜利!"
+              (chessColor === "white" ? "黑棋" : "白棋") + "胜利!"
             );
             window.location.reload();
           }
