@@ -62,12 +62,12 @@
         border-radius: 50%;
       }
 
-      .white {
+      .black {
         background: #000;
         border: 1px solid #000;
         box-shadow: 0 1px 3px #eee, 1px 1px 2px rgb(99, 99, 99) inset;
       }
-      .black {
+      .white {
         background: #fff;
         border: 1px solid #ccc;
         box-shadow: 0 0 3px #ccc, 0 2px 2px #eee inset;
@@ -84,12 +84,12 @@
       // demo：http://www.ferecord.com/lab/gobang/
       // 我简化了代码，去掉了类和代理，让大家更容易理解。
 
-      // 在康老师的基础上继续优化：
-      // 20220811 修改了背景、黑子先下（非逻辑修改，只改了汉字和对应的棋子）。
-      // 下步需要升级的地方：
-      // 1、五子棋棋盘是15*15交叉点。非15*15格。（围棋是19*19交叉点）
-      // 2、棋子在右端边+下端边，下不了棋。棋子在上端边+左端边，棋子只显示一半。
-      // 3、棋盘需要加一个外边框，才美观。
+      /* 在康老师的基础上继续优化：
+       20220811 修改了背景、黑子先下（非逻辑修改，只改了汉字和对应的棋子）。
+       下步需要升级的地方：
+       1、五子棋棋盘是15*15交叉点。非15*15格。（围棋是19*19交叉点）
+       2、棋子在右端边+下端边，下不了棋。棋子在上端边+左端边，棋子只显示一半。
+       3、棋盘需要加一个外边框，才美观。*/
 
       // 获取id为root的标签元素
       let root = document.getElementById("root");
@@ -129,8 +129,8 @@
       // 把写好的html 设置为root元素的html，就是渲染到屏幕上
       root.innerHTML = html;
 
-      // 棋子颜色
-      let chessColor = "black";
+      // 先手棋子颜色
+      let chessColor = "white";
 
       //给棋盘添加监听事件，当click点击时，执行函数
       root.addEventListener("click", (e) => {
@@ -149,10 +149,10 @@
             // 改变棋子颜色，因为每次点击都会交换选手
             chessColor = "black";
             // 改变提示
-            document.getElementById("info").innerHTML = "黑子下棋";
+            document.getElementById("info").innerHTML = "白子下棋";
           } else {
             chessColor = "white";
-            document.getElementById("info").innerHTML = "白子下棋";
+            document.getElementById("info").innerHTML = "黑子下棋";
           }
           // 把颜色css加入标签的class列表里
           target.classList.add(chessColor);
@@ -238,7 +238,7 @@
           if (positiveDirectionNumber + negativeDirectionNumber >= 4) {
             // 提示胜利方后reload刷新页面重新开始
             window.confirm(
-              (chessColor === "white" ? "黑棋" : "白棋") + "胜利!"
+              (chessColor === "white" ? "黑棋" : "白棋") + "加油!"
             );
             window.location.reload();
           }
